@@ -1,40 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class UploadedImage : MonoBehaviour
 {
-    private Image _image;
-    private string _url;
-    private SpriteRenderer _spriteRenderer;
-    private bool _isLoaded = false;
+    [Header("Количество столбцов с изображениями")]
+    protected int _countOfColumn = 1; //1 для 1 изображения и GameData.Instance.CountOfColumn для сетки изображений
+    protected Image _image;
+    protected string _url;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _image = GetComponent<Image>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    protected virtual void Start()
+    {
+        _url = GameData.Instance.CurrentUrlPath;
+        LoadImage();
     }
 
     public void SetUrl(string fullUrl)
     {
         _url = fullUrl;
     }
-    /// <summary>
-    /// При именовании изображений по порядку, находящихся по одному адресу
-    /// </summary>
-    /// <param name="urlFolder">Общая часть URL</param>
-    public void SetUrl(string urlFolder, int sequenceNumber)
-    {
-        _url = urlFolder + sequenceNumber + ".jpg";
-    }
 
     public void LoadImage()
     {
         StartCoroutine(SetImage());
+    }
+
+    protected void SetImageScale(Texture tex) //На случай, если изображение не квадратное
+    {
+        float x = tex.width;
+        float y = tex.height;
+        float currentX = (float)(Screen.width - (_countOfColumn+1) * GameData.Instance.Offset) / _countOfColumn;
+        float scaleX = x / currentX;
+        float currentY = y / scaleX;
+        Vector2 imageSize = new Vector2(currentX, currentY);
+        _image.rectTransform.sizeDelta = imageSize;
     }
 
     IEnumerator SetImage()
@@ -48,19 +55,11 @@ public class UploadedImage : MonoBehaviour
         else
         {
             Texture2D tex = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            SetImageScale(tex);
             Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
             _image.overrideSprite = sprite;
         }
         request.Dispose();
-    }
-
-    private void Update()
-    {
-        if(_spriteRenderer.isVisible && !_isLoaded)
-        {
-            LoadImage();
-            _isLoaded = true;
-        }
     }
 
 }

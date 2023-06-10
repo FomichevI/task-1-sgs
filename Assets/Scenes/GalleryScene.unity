@@ -416,7 +416,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793338352}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
@@ -560,7 +560,7 @@ MonoBehaviour:
   _urlFolder: http://data.ikppbb.com/test-task-unity-data/pics/
   _countOfImages: 66
   _contentTransform: {fileID: 1548456171}
-  _uploadedImagePrefab: {fileID: 9176476459644203129, guid: 3e8c17a4df47160479c242d1f44eb120, type: 3}
+  _uploadedImagePrefab: {fileID: 7054018439472607393, guid: 764feb686de073849864640aabe3415d, type: 3}
 --- !u!1 &2018258034
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,5 +760,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gridLayout: {fileID: 1548456172}
   _spacings: 20
-  _hieghtScale: 1
-  _numberOfColumns: 2
+  _hieghtScale: 0.8
