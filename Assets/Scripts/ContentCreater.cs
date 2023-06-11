@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ContentCreater : MonoBehaviour
@@ -9,7 +7,7 @@ public class ContentCreater : MonoBehaviour
 
     void Start()
     {
-        for (int i = 1; i<= GameData.Instance.CountOfImages; i++)
+        for (int i = 1; i <= GameData.Instance.CountOfImages; i++)
         {
             GameObject upImage = Instantiate(_uploadedImagePrefab, _contentTransform);
             upImage.transform.localScale = Vector3.one;

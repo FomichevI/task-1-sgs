@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class UploadedImageAuto : UploadedImage
@@ -18,7 +13,7 @@ public class UploadedImageAuto : UploadedImage
         _countOfColumn = GameData.Instance.CountOfColumn;
     }
     protected override void Start()
-    {       }
+    { }
 
     /// <summary>
     /// При именовании изображений по порядку, находящихся по одному адресу
@@ -31,7 +26,7 @@ public class UploadedImageAuto : UploadedImage
 
     private void Update()
     {
-        if(_spriteRenderer.isVisible && !_isLoaded)
+        if (_spriteRenderer.isVisible && !_isLoaded)
         {
             LoadImage();
             _isLoaded = true;
@@ -42,5 +37,4 @@ public class UploadedImageAuto : UploadedImage
     {
         SceneController.Instance?.LoadViewScene(_url);
     }
-
 }

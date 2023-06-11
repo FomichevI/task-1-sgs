@@ -181,13 +181,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3b1f25bcd6adf4294d5ebc0e11c779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SceneToLoad: 0
   CurrentUrlPath: 
   _countOfColumn: 2
   _offset: 20
   _hieghtScale: 1
   _urlFolder: http://data.ikppbb.com/test-task-unity-data/pics/
   _countOfImages: 66
-  _loadingTime: 2.5
+  _loadingTime: 1.5
 --- !u!114 &2031030
 MonoBehaviour:
   m_ObjectHideFlags: 0

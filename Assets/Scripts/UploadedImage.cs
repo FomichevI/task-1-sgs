@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -37,7 +35,7 @@ public class UploadedImage : MonoBehaviour
     {
         float x = tex.width;
         float y = tex.height;
-        float currentX = (float)(Screen.width - (_countOfColumn+1) * GameData.Instance.Offset) / _countOfColumn;
+        float currentX = (float)(Screen.width - (_countOfColumn + 1) * GameData.Instance.Offset) / _countOfColumn;
         float scaleX = x / currentX;
         float currentY = y / scaleX;
         Vector2 imageSize = new Vector2(currentX, currentY);
@@ -61,5 +59,4 @@ public class UploadedImage : MonoBehaviour
         }
         request.Dispose();
     }
-
 }
