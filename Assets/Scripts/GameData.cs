@@ -10,7 +10,7 @@ public class GameData : MonoBehaviour
     public string UrlFolder { get => _urlFolder; }
     public int CountOfImages { get => _countOfImages; }
     public float LoadingTime { get => _loadingTime; }
-    [HideInInspector] public int SceneToLoad;
+    [HideInInspector] public string SceneToLoad;
 
     [HideInInspector] public string CurrentUrlPath;
     [SerializeField] private int _countOfColumn = 2;
