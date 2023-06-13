@@ -12,28 +12,28 @@ public class SceneController : MonoBehaviour
     }
     public void LoadGalleryScene()
     {
-        LoadWithLoadingScene(1);
+        LoadWithLoadingScene(2);
     }
     public void LoadViewScene(string currentUrl)
     {
         GameData.Instance.CurrentUrlPath = currentUrl;
-        LoadWithLoadingScene(2);
+        LoadWithLoadingScene(3);
     }
     public void LoadMenuScene()
     {
-        LoadWithLoadingScene(0);
+        LoadWithLoadingScene(1);
     }
     private void LoadWithLoadingScene(int index)
     {
         GameData.Instance.SceneToLoad = index;
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(0);
         Screen.orientation = ScreenOrientation.Portrait;
-        if (index == 2)
+        if (index == 3)
             Screen.orientation = ScreenOrientation.AutoRotation;
     }
     public void BackToPreviousScene()
     {
-        if (SceneManager.GetActiveScene().buildIndex > 0)
+        if (SceneManager.GetActiveScene().buildIndex > 1)
             LoadWithLoadingScene(SceneManager.GetActiveScene().buildIndex - 1);
         else
             Application.Quit();
